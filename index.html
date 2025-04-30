@@ -1,495 +1,1493 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços On-Demand | Contrate profissionais qualificados</title>
+
+    <title>Resolve Aí - Contrate profissionais qualificados</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
+
+        body {
+
+            font-family: 'Poppins', sans-serif;
+
+        }
+
         .gradient-bg {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            background: linear-gradient(135deg, #1F2937 0%, #F97316 100%);
+
         }
+
         .service-card:hover {
+
             transform: translateY(-5px);
+
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+
         }
+
         .professional-card:hover {
+
             transform: scale(1.02);
+
         }
+
         .rating-stars {
-            color: #fbbf24;
+
+            color: #F97316;
+
         }
-        .map-container {
-            height: 300px;
-            background-color: #e5e7eb;
-            border-radius: 1rem;
-            position: relative;
-            overflow: hidden;
+
+        .filter-btn:hover {
+
+            background-color: #1F2937;
+
+            color: white;
+
         }
-        .map-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #e5e7eb;
-            color: #6b7280;
+
+        .filter-btn.active {
+
+            background-color: #1F2937;
+
+            color: white;
+
         }
-        .progress-bar {
-            height: 6px;
-            border-radius: 3px;
-            background-color: #e5e7eb;
-        }
-        .progress-fill {
-            height: 100%;
-            border-radius: 3px;
-            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-        .animate-pulse {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
+
     </style>
-</head>
-<body class="bg-gray-50 font-sans">
-    <!-- Header -->
-    <header class="gradient-bg text-white shadow-lg">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-tools text-2xl"></i>
-                    <h1 class="text-xl font-bold">Serviços On-Demand</h1>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <button class="p-2 rounded-full bg-white bg-opacity-20">
-                        <i class="fas fa-bell"></i>
-                    </button>
-                    <button class="p-2 rounded-full bg-white bg-opacity-20">
-                        <i class="fas fa-user"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="mt-6 relative">
-                <input type="text" placeholder="Qual serviço você precisa hoje?" 
-                       class="w-full py-3 px-4 pr-12 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-            
-            <div class="mt-4 flex overflow-x-auto pb-2 space-x-3">
-                <button class="flex-shrink-0 px-4 py-2 bg-white bg-opacity-20 rounded-full flex items-center space-x-2">
-                    <i class="fas fa-bolt"></i>
-                    <span>Urgente</span>
-                </button>
-                <button class="flex-shrink-0 px-4 py-2 bg-white bg-opacity-20 rounded-full flex items-center space-x-2">
-                    <i class="fas fa-home"></i>
-                    <span>Residencial</span>
-                </button>
-                <button class="flex-shrink-0 px-4 py-2 bg-white bg-opacity-20 rounded-full flex items-center space-x-2">
-                    <i class="fas fa-building"></i>
-                    <span>Comercial</span>
-                </button>
-                <button class="flex-shrink-0 px-4 py-2 bg-white bg-opacity-20 rounded-full flex items-center space-x-2">
-                    <i class="fas fa-star"></i>
-                    <span>Premium</span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-6">
-        <!-- Categorias de Serviços -->
-        <section class="mb-8">
-            <h2 class="text-xl font-bold mb-4 text-gray-800">Categorias populares</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Encanador -->
-                <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
-                    <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-blue-100 flex items-center justify-center">
-                        <i class="fas fa-faucet text-blue-500 text-2xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800">Encanador</h3>
-                    <p class="text-sm text-gray-500 mt-1">Vazamentos, instalações</p>
-                </div>
-                
-                <!-- Eletricista -->
-                <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
-                    <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-yellow-100 flex items-center justify-center">
-                        <i class="fas fa-bolt text-yellow-500 text-2xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800">Eletricista</h3>
-                    <p class="text-sm text-gray-500 mt-1">Instalações, reparos</p>
-                </div>
-                
-                <!-- Pedreiro -->
-                <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
-                    <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-orange-100 flex items-center justify-center">
-                        <i class="fas fa-hammer text-orange-500 text-2xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800">Pedreiro</h3>
-                    <p class="text-sm text-gray-500 mt-1">Reformas, construções</p>
-                </div>
-                
-                <!-- Pintor -->
-                <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
-                    <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-green-100 flex items-center justify-center">
-                        <i class="fas fa-paint-roller text-green-500 text-2xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800">Pintor</h3>
-                    <p class="text-sm text-gray-500 mt-1">Paredes, tetos, fachadas</p>
-                </div>
-            </div>
-            
-            <div class="mt-4 text-center">
-                <button class="text-blue-500 font-medium flex items-center justify-center mx-auto">
-                    <span>Ver todas categorias</span>
-                    <i class="fas fa-chevron-down ml-2"></i>
-                </button>
-            </div>
-        </section>
-
-        <!-- Profissionais próximos -->
-        <section class="mb-8">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold text-gray-800">Profissionais próximos</h2>
-                <button class="text-sm text-blue-500 font-medium">Ver todos</button>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Profissional 1 -->
-                <div class="professional-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
-                             alt="Encanador" class="w-full h-40 object-cover">
-                        <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full p-2 shadow">
-                            <i class="fas fa-heart text-red-500"></i>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-bold text-gray-800">Carlos Silva</h3>
-                                <p class="text-sm text-gray-500">Encanador</p>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-star rating-stars"></i>
-                                <span class="ml-1 font-medium">4.9</span>
-                            </div>
-                        </div>
-                        <div class="mt-3 flex items-center text-sm text-gray-500">
-                            <i class="fas fa-map-marker-alt mr-1"></i>
-                            <span>1.2 km de distância</span>
-                        </div>
-                        <div class="mt-3 pt-3 border-t border-gray-100 flex justify-between items-center">
-                            <span class="text-sm text-gray-500">A partir de</span>
-                            <span class="font-bold text-gray-800">R$ 120,00</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Profissional 2 -->
-                <div class="professional-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
-                             alt="Eletricista" class="w-full h-40 object-cover">
-                        <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full p-2 shadow">
-                            <i class="far fa-heart text-gray-400"></i>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-bold text-gray-800">Ana Oliveira</h3>
-                                <p class="text-sm text-gray-500">Eletricista</p>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-star rating-stars"></i>
-                                <span class="ml-1 font-medium">4.8</span>
-                            </div>
-                        </div>
-                        <div class="mt-3 flex items-center text-sm text-gray-500">
-                            <i class="fas fa-map-marker-alt mr-1"></i>
-                            <span>0.8 km de distância</span>
-                        </div>
-                        <div class="mt-3 pt-3 border-t border-gray-100 flex justify-between items-center">
-                            <span class="text-sm text-gray-500">A partir de</span>
-                            <span class="font-bold text-gray-800">R$ 150,00</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Profissional 3 -->
-                <div class="professional-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1605170439002-90845e8c0137?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
-                             alt="Pedreiro" class="w-full h-40 object-cover">
-                        <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full p-2 shadow">
-                            <i class="far fa-heart text-gray-400"></i>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-bold text-gray-800">José Santos</h3>
-                                <p class="text-sm text-gray-500">Pedreiro</p>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-star rating-stars"></i>
-                                <span class="ml-1 font-medium">4.7</span>
-                            </div>
-                        </div>
-                        <div class="mt-3 flex items-center text-sm text-gray-500">
-                            <i class="fas fa-map-marker-alt mr-1"></i>
-                            <span>2.1 km de distância</span>
-                        </div>
-                        <div class="mt-3 pt-3 border-t border-gray-100 flex justify-between items-center">
-                            <span class="text-sm text-gray-500">A partir de</span>
-                            <span class="font-bold text-gray-800">R$ 180,00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Como funciona -->
-        <section class="mb-8 bg-white rounded-xl shadow-md p-6">
-            <h2 class="text-xl font-bold mb-6 text-gray-800">Como funciona</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-100 flex items-center justify-center">
-                        <i class="fas fa-search text-blue-500 text-2xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800 mb-2">1. Encontre um profissional</h3>
-                    <p class="text-gray-600">Busque por categoria ou descreva o serviço que precisa</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-100 flex items-center justify-center">
-                        <i class="fas fa-calendar-check text-purple-500 text-2xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800 mb-2">2. Agende o serviço</h3>
-                    <p class="text-gray-600">Escolha data, horário e confirme o orçamento</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
-                        <i class="fas fa-check-circle text-green-500 text-2xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-800 mb-2">3. Serviço realizado</h3>
-                    <p class="text-gray-600">Acompanhe em tempo real e avalie o profissional</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Serviço em andamento (simulado) -->
-        <section class="mb-8 bg-white rounded-xl shadow-md p-6 hidden" id="active-service">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-gray-800">Seu serviço</h2>
-                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">Em andamento</span>
-            </div>
-            
-            <div class="flex items-center mb-6">
-                <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
-                     alt="Profissional" class="w-16 h-16 rounded-full object-cover mr-4">
-                <div>
-                    <h3 class="font-bold text-gray-800">Carlos Silva</h3>
-                    <p class="text-gray-600">Encanador</p>
-                    <div class="flex items-center mt-1">
-                        <i class="fas fa-star rating-stars"></i>
-                        <span class="ml-1 text-sm font-medium">4.9 (128 avaliações)</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mb-6">
-                <h4 class="font-semibold text-gray-800 mb-2">Reparo de vazamento</h4>
-                <p class="text-gray-600">Troca de registro na cozinha</p>
-            </div>
-            
-            <div class="map-container mb-6">
-                <div class="map-placeholder">
-                    <i class="fas fa-map-marker-alt text-3xl mr-2"></i>
-                    <span>Profissional a caminho - 5 min</span>
-                </div>
-            </div>
-            
-            <div class="mb-6">
-                <div class="flex justify-between text-sm text-gray-600 mb-1">
-                    <span>Tempo estimado</span>
-                    <span>30 min</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="service-progress"></div>
-                </div>
-            </div>
-            
-            <div class="flex justify-between">
-                <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-lg font-medium flex items-center">
-                    <i class="fas fa-phone-alt mr-2"></i>
-                    <span>Ligar</span>
-                </button>
-                <button class="px-4 py-2 bg-red-100 text-red-600 rounded-lg font-medium flex items-center">
-                    <i class="fas fa-times mr-2"></i>
-                    <span>Cancelar</span>
-                </button>
-            </div>
-        </section>
-    </main>
-
-    <!-- Bottom Navigation -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-around">
-                <button class="py-3 px-4 text-center text-purple-600 border-b-2 border-purple-600">
-                    <i class="fas fa-home block text-xl mb-1"></i>
-                    <span class="text-xs">Início</span>
-                </button>
-                <button class="py-3 px-4 text-center text-gray-500">
-                    <i class="fas fa-search block text-xl mb-1"></i>
-                    <span class="text-xs">Buscar</span>
-                </button>
-                <button class="py-3 px-4 text-center text-gray-500 relative">
-                    <i class="fas fa-bell block text-xl mb-1"></i>
-                    <span class="text-xs">Notificações</span>
-                    <span class="absolute top-1 right-3 w-2 h-2 bg-red-500 rounded-full"></span>
-                </button>
-                <button class="py-3 px-4 text-center text-gray-500">
-                    <i class="fas fa-user block text-xl mb-1"></i>
-                    <span class="text-xs">Perfil</span>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Botão flutuante para solicitar serviço -->
-    <div class="fixed bottom-20 right-4 z-10">
-        <button id="request-service-btn" class="w-14 h-14 gradient-bg text-white rounded-full shadow-xl flex items-center justify-center text-2xl">
-            <i class="fas fa-plus"></i>
-        </button>
-    </div>
-
-    <!-- Modal de solicitação de serviço -->
-    <div id="service-modal" class="fixed inset-0 bg-black bg-opacity-50 z-20 flex items-center justify-center hidden">
-        <div class="bg-white rounded-t-3xl w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto" style="margin-top: auto;">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-bold text-gray-800">Solicitar serviço</h2>
-                    <button id="close-modal" class="text-gray-500">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-medium mb-2">Qual serviço você precisa?</label>
-                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
-                        <option value="">Selecione uma categoria</option>
-                        <option value="plumber">Encanador</option>
-                        <option value="electrician">Eletricista</option>
-                        <option value="builder">Pedreiro</option>
-                        <option value="painter">Pintor</option>
-                        <option value="cleaner">Diarista</option>
-                    </select>
-                </div>
-                
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-medium mb-2">Descreva o serviço</label>
-                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" 
-                              rows="3" placeholder="Ex: Preciso trocar um registro que está vazando na cozinha"></textarea>
-                </div>
-                
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-medium mb-2">Quando precisa?</label>
-                    <div class="grid grid-cols-2 gap-3">
-                        <button class="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg font-medium">Hoje</button>
-                        <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium">Amanhã</button>
-                        <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium">Esta semana</button>
-                        <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium">Próxima semana</button>
-                    </div>
-                </div>
-                
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-medium mb-2">Endereço</label>
-                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" 
-                           value="Rua das Flores, 123 - São Paulo/SP">
-                </div>
-                
-                <button id="confirm-service-btn" class="w-full gradient-bg text-white py-4 rounded-full font-bold shadow-lg">
-                    Solicitar profissional
-                </button>
-            </div>
-        </div>
-    </div>
 
     <script>
-        // Simulação de interações
-        document.addEventListener('DOMContentLoaded', function() {
-            // Abrir modal de solicitação
-            const requestBtn = document.getElementById('request-service-btn');
-            const serviceModal = document.getElementById('service-modal');
-            const closeModal = document.getElementById('close-modal');
-            const confirmServiceBtn = document.getElementById('confirm-service-btn');
-            const activeServiceSection = document.getElementById('active-service');
-            const progressBar = document.getElementById('service-progress');
-            
-            requestBtn.addEventListener('click', function() {
-                serviceModal.classList.remove('hidden');
-            });
-            
-            closeModal.addEventListener('click', function() {
-                serviceModal.classList.add('hidden');
-            });
-            
-            // Confirmar serviço (simulação)
-            confirmServiceBtn.addEventListener('click', function() {
-                serviceModal.classList.add('hidden');
-                activeServiceSection.classList.remove('hidden');
-                
-                // Simular progresso do serviço
-                let progress = 0;
-                const interval = setInterval(function() {
-                    progress += 5;
-                    progressBar.style.width = progress + '%';
-                    
-                    if (progress >= 100) {
-                        clearInterval(interval);
-                        // Aqui você poderia mostrar uma mensagem de conclusão
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    colors: {
+
+                        primary: '#F97316',
+
+                        dark: '#1F2937',
+
                     }
-                }, 1000);
-            });
-            
-            // Animar cards de serviço ao passar o mouse
-            const serviceCards = document.querySelectorAll('.service-card');
-            serviceCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px)';
-                    this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = '';
-                    this.style.boxShadow = '';
-                });
-            });
-            
-            // Animar cards de profissionais ao passar o mouse
-            const professionalCards = document.querySelectorAll('.professional-card');
-            professionalCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.02)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = '';
-                });
-            });
-        });
+
+                }
+
+            }
+
+        }
+
     </script>
+
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Página Inicial -->
+
+    <div id="index-page">
+
+        <!-- Header -->
+
+        <header class="gradient-bg text-white shadow-lg fixed top-0 left-0 right-0 z-50">
+
+            <div class="container mx-auto px-4 py-4">
+
+                <div class="flex justify-between items-center">
+
+                    <div class="flex items-center space-x-2">
+
+                        <i class="fas fa-tools text-2xl text-primary"></i>
+
+                        <h1 class="text-xl font-bold">Resolve Aí</h1>
+
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+
+                        <button class="p-2 rounded-full bg-white bg-opacity-20">
+
+                            <i class="fas fa-bell"></i>
+
+                        </button>
+
+                        <button class="p-2 rounded-full bg-white bg-opacity-20">
+
+                            <i class="fas fa-user"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="mt-6 relative">
+
+                    <input type="text" placeholder="Qual serviço você precisa hoje?" 
+
+                           class="w-full py-3 px-4 pr-12 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary">
+
+                    <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500">
+
+                        <i class="fas fa-search"></i>
+
+                    </button>
+
+                </div>
+
+                
+
+                <div class="mt-4 flex overflow-x-auto pb-2 space-x-3">
+
+                    <button class="filter-btn flex-shrink-0 px-4 py-2 bg-white bg-opacity-20 rounded-full flex items-center space-x-2 active">
+
+                        <i class="fas fa-bolt"></i>
+
+                        <span>Urgente</span>
+
+                    </button>
+
+                    <button class="filter-btn flex-shrink-0 px-4 py-2 bg-white bg-opacity-20 rounded-full flex items-center space-x-2">
+
+                        <i class="fas fa-home"></i>
+
+                        <span>Residencial</span>
+
+                    </button>
+
+                    <button class="filter-btn flex-shrink-0 px-4 py-2 bg-white bg-opacity-20 rounded-full flex items-center space-x-2">
+
+                        <i class="fas fa-building"></i>
+
+                        <span>Comercial</span>
+
+                    </button>
+
+                    <button class="filter-btn flex-shrink-0 px-4 py-2 bg-white bg-opacity-20 rounded-full flex items-center space-x-2">
+
+                        <i class="fas fa-star"></i>
+
+                        <span>Premium</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- Main Content -->
+
+        <main class="container mx-auto px-4 pt-32 pb-20">
+
+            <!-- Categorias de Serviços -->
+
+            <section class="mb-8">
+
+                <h2 class="text-xl font-bold mb-4 text-dark">Categorias populares</h2>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+
+                    <!-- Encanador -->
+
+                    <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-orange-100 flex items-center justify-center">
+
+                            <i class="fas fa-faucet text-primary text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark">Encanador</h3>
+
+                    </div>
+
+                    
+
+                    <!-- Eletricista -->
+
+                    <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-yellow-100 flex items-center justify-center">
+
+                            <i class="fas fa-bolt text-yellow-500 text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark">Eletricista</h3>
+
+                    </div>
+
+                    
+
+                    <!-- Pedreiro -->
+
+                    <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-amber-100 flex items-center justify-center">
+
+                            <i class="fas fa-hammer text-amber-500 text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark">Pedreiro</h3>
+
+                    </div>
+
+                    
+
+                    <!-- Pintor -->
+
+                    <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-green-100 flex items-center justify-center">
+
+                            <i class="fas fa-paint-roller text-green-500 text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark">Pintor</h3>
+
+                    </div>
+
+                    
+
+                    <!-- Podador de Árvores -->
+
+                    <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-emerald-100 flex items-center justify-center">
+
+                            <i class="fas fa-tree text-emerald-500 text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark">Podador de Árvores</h3>
+
+                    </div>
+
+                    
+
+                    <!-- Cuidador de Idosos -->
+
+                    <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-blue-100 flex items-center justify-center">
+
+                            <i class="fas fa-user-nurse text-blue-500 text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark">Cuidador de Idosos</h3>
+
+                    </div>
+
+                    
+
+                    <!-- Enfermeiro -->
+
+                    <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-red-100 flex items-center justify-center">
+
+                            <i class="fas fa-medkit text-red-500 text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark">Enfermeiro</h3>
+
+                    </div>
+
+                    
+
+                    <!-- Montador de Móveis -->
+
+                    <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-purple-100 flex items-center justify-center">
+
+                            <i class="fas fa-couch text-purple-500 text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark">Montador de Móveis</h3>
+
+                    </div>
+
+                    
+
+                    <!-- Técnico de Ar Condicionado -->
+
+                    <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-cyan-100 flex items-center justify-center">
+
+                            <i class="fas fa-snowflake text-cyan-500 text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark">Técnico de Ar Condicionado</h3>
+
+                    </div>
+
+                    
+
+                    <!-- Diarista -->
+
+                    <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-pink-100 flex items-center justify-center">
+
+                            <i class="fas fa-broom text-pink-500 text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark">Diarista</h3>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="mt-6 text-center">
+
+                    <a href="#categorias-page" class="text-primary font-medium flex items-center justify-center mx-auto">
+
+                        <span>Ver todas categorias</span>
+
+                        <i class="fas fa-chevron-down ml-2"></i>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- Profissionais próximos -->
+
+            <section class="mb-8">
+
+                <div class="flex justify-between items-center mb-4">
+
+                    <h2 class="text-xl font-bold text-dark">Profissionais próximos</h2>
+
+                    <button class="text-sm text-primary font-medium">Ver todos</button>
+
+                </div>
+
+                
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                    <!-- Profissional 1 -->
+
+                    <div class="professional-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+
+                        <div class="relative">
+
+                            <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+
+                                 alt="Encanador" class="w-full h-40 object-cover">
+
+                            <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full p-2 shadow">
+
+                                <i class="fas fa-heart text-red-500"></i>
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-4">
+
+                            <div class="flex justify-between items-start">
+
+                                <div>
+
+                                    <h3 class="font-bold text-dark">João de Deus</h3>
+
+                                    <p class="text-sm text-gray-500">Encanador</p>
+
+                                </div>
+
+                                <div class="flex items-center">
+
+                                    <i class="fas fa-star rating-stars"></i>
+
+                                    <span class="ml-1 font-medium">4.8</span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="mt-3 flex items-center text-sm text-gray-500">
+
+                                <i class="fas fa-map-marker-alt mr-1"></i>
+
+                                <span>1.2 km de distância</span>
+
+                            </div>
+
+                            <div class="mt-3 pt-3 border-t border-gray-100 flex justify-between items-center">
+
+                                <span class="text-sm text-gray-500">A partir de</span>
+
+                                <span class="font-bold text-dark">R$ 120,00</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    
+
+                    <!-- Profissional 2 -->
+
+                    <div class="professional-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+
+                        <div class="relative">
+
+                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+
+                                 alt="Eletricista" class="w-full h-40 object-cover">
+
+                            <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full p-2 shadow">
+
+                                <i class="far fa-heart text-gray-400"></i>
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-4">
+
+                            <div class="flex justify-between items-start">
+
+                                <div>
+
+                                    <h3 class="font-bold text-dark">Maria Souza</h3>
+
+                                    <p class="text-sm text-gray-500">Eletricista</p>
+
+                                </div>
+
+                                <div class="flex items-center">
+
+                                    <i class="fas fa-star rating-stars"></i>
+
+                                    <span class="ml-1 font-medium">4.6</span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="mt-3 flex items-center text-sm text-gray-500">
+
+                                <i class="fas fa-map-marker-alt mr-1"></i>
+
+                                <span>0.8 km de distância</span>
+
+                            </div>
+
+                            <div class="mt-3 pt-3 border-t border-gray-100 flex justify-between items-center">
+
+                                <span class="text-sm text-gray-500">A partir de</span>
+
+                                <span class="font-bold text-dark">R$ 150,00</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    
+
+                    <!-- Profissional 3 -->
+
+                    <div class="professional-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+
+                        <div class="relative">
+
+                            <img src="https://images.unsplash.com/photo-1605170439002-90845e8c0137?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+
+                                 alt="Pedreiro" class="w-full h-40 object-cover">
+
+                            <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full p-2 shadow">
+
+                                <i class="far fa-heart text-gray-400"></i>
+
+                            </div>
+
+                        </div>
+
+                        <div class="p-4">
+
+                            <div class="flex justify-between items-start">
+
+                                <div>
+
+                                    <h3 class="font-bold text-dark">Pedro Oliveira</h3>
+
+                                    <p class="text-sm text-gray-500">Pedreiro</p>
+
+                                </div>
+
+                                <div class="flex items-center">
+
+                                    <i class="fas fa-star rating-stars"></i>
+
+                                    <span class="ml-1 font-medium">4.9</span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="mt-3 flex items-center text-sm text-gray-500">
+
+                                <i class="fas fa-map-marker-alt mr-1"></i>
+
+                                <span>2.1 km de distância</span>
+
+                            </div>
+
+                            <div class="mt-3 pt-3 border-t border-gray-100 flex justify-between items-center">
+
+                                <span class="text-sm text-gray-500">A partir de</span>
+
+                                <span class="font-bold text-dark">R$ 180,00</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- Como funciona -->
+
+            <section class="mb-8 bg-white rounded-xl shadow-md p-6">
+
+                <h2 class="text-xl font-bold mb-6 text-dark">Como funciona</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                    <div class="text-center">
+
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-orange-100 flex items-center justify-center">
+
+                            <i class="fas fa-search text-primary text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark mb-2">1. Encontre um profissional</h3>
+
+                        <p class="text-gray-600">Busque por categoria ou descreva o serviço que precisa</p>
+
+                    </div>
+
+                    <div class="text-center">
+
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-orange-100 flex items-center justify-center">
+
+                            <i class="fas fa-calendar-check text-primary text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark mb-2">2. Agende o serviço</h3>
+
+                        <p class="text-gray-600">Escolha data, horário e confirme o orçamento</p>
+
+                    </div>
+
+                    <div class="text-center">
+
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-orange-100 flex items-center justify-center">
+
+                            <i class="fas fa-check-circle text-primary text-2xl"></i>
+
+                        </div>
+
+                        <h3 class="font-semibold text-dark mb-2">3. Serviço realizado</h3>
+
+                        <p class="text-gray-600">Acompanhe em tempo real e avalie o profissional</p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+
+        <!-- Footer -->
+
+        <footer class="bg-dark text-white py-6">
+
+            <div class="container mx-auto px-4 text-center">
+
+                <p>© 2025 Resolve Aí – Todos os direitos reservados</p>
+
+            </div>
+
+        </footer>
+
+
+
+        <!-- Bottom Navigation -->
+
+        <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200">
+
+            <div class="container mx-auto px-4">
+
+                <div class="flex justify-around">
+
+                    <button class="py-3 px-4 text-center text-primary border-b-2 border-primary">
+
+                        <i class="fas fa-home block text-xl mb-1"></i>
+
+                        <span class="text-xs">Início</span>
+
+                    </button>
+
+                    <button class="py-3 px-4 text-center text-gray-500">
+
+                        <i class="fas fa-search block text-xl mb-1"></i>
+
+                        <span class="text-xs">Buscar</span>
+
+                    </button>
+
+                    <button class="py-3 px-4 text-center text-gray-500 relative">
+
+                        <i class="fas fa-bell block text-xl mb-1"></i>
+
+                        <span class="text-xs">Notificações</span>
+
+                        <span class="absolute top-1 right-3 w-2 h-2 bg-red-500 rounded-full"></span>
+
+                    </button>
+
+                    <button class="py-3 px-4 text-center text-gray-500">
+
+                        <i class="fas fa-user block text-xl mb-1"></i>
+
+                        <span class="text-xs">Perfil</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </div>
+
+
+
+    <!-- Página de Categorias -->
+
+    <div id="categorias-page" class="hidden">
+
+        <!-- Header -->
+
+        <header class="gradient-bg text-white shadow-lg fixed top-0 left-0 right-0 z-50">
+
+            <div class="container mx-auto px-4 py-4">
+
+                <div class="flex justify-between items-center">
+
+                    <div class="flex items-center space-x-2">
+
+                        <i class="fas fa-tools text-2xl text-primary"></i>
+
+                        <h1 class="text-xl font-bold">Resolve Aí</h1>
+
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+
+                        <button class="p-2 rounded-full bg-white bg-opacity-20">
+
+                            <i class="fas fa-bell"></i>
+
+                        </button>
+
+                        <button class="p-2 rounded-full bg-white bg-opacity-20">
+
+                            <i class="fas fa-user"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- Main Content -->
+
+        <main class="container mx-auto px-4 pt-28 pb-20">
+
+            <h2 class="text-2xl font-bold text-center mb-8 text-dark">Todas as Categorias</h2>
+
+            
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+                <!-- Encanador -->
+
+                <a href="#encanador-page" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-orange-100 flex items-center justify-center">
+
+                        <i class="fas fa-faucet text-primary text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Encanador</h3>
+
+                </a>
+
+                
+
+                <!-- Eletricista -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-yellow-100 flex items-center justify-center">
+
+                        <i class="fas fa-bolt text-yellow-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Eletricista</h3>
+
+                </a>
+
+                
+
+                <!-- Pedreiro -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-amber-100 flex items-center justify-center">
+
+                        <i class="fas fa-hammer text-amber-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Pedreiro</h3>
+
+                </a>
+
+                
+
+                <!-- Pintor -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-green-100 flex items-center justify-center">
+
+                        <i class="fas fa-paint-roller text-green-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Pintor</h3>
+
+                </a>
+
+                
+
+                <!-- Podador de Árvores -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-emerald-100 flex items-center justify-center">
+
+                        <i class="fas fa-tree text-emerald-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Podador de Árvores</h3>
+
+                </a>
+
+                
+
+                <!-- Cuidador de Idosos -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-blue-100 flex items-center justify-center">
+
+                        <i class="fas fa-user-nurse text-blue-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Cuidador de Idosos</h3>
+
+                </a>
+
+                
+
+                <!-- Enfermeiro -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-red-100 flex items-center justify-center">
+
+                        <i class="fas fa-medkit text-red-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Enfermeiro</h3>
+
+                </a>
+
+                
+
+                <!-- Montador de Móveis -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-purple-100 flex items-center justify-center">
+
+                        <i class="fas fa-couch text-purple-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Montador de Móveis</h3>
+
+                </a>
+
+                
+
+                <!-- Técnico de Ar Condicionado -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-cyan-100 flex items-center justify-center">
+
+                        <i class="fas fa-snowflake text-cyan-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Técnico de Ar Condicionado</h3>
+
+                </a>
+
+                
+
+                <!-- Diarista -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-pink-100 flex items-center justify-center">
+
+                        <i class="fas fa-broom text-pink-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Diarista</h3>
+
+                </a>
+
+                
+
+                <!-- Jardineiro -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-green-100 flex items-center justify-center">
+
+                        <i class="fas fa-leaf text-green-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Jardineiro</h3>
+
+                </a>
+
+                
+
+                <!-- Motorista Particular -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-blue-100 flex items-center justify-center">
+
+                        <i class="fas fa-car text-blue-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Motorista Particular</h3>
+
+                </a>
+
+                
+
+                <!-- Mecânico -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-gray-100 flex items-center justify-center">
+
+                        <i class="fas fa-tools text-gray-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Mecânico</h3>
+
+                </a>
+
+                
+
+                <!-- Gesseiro -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-white-100 flex items-center justify-center">
+
+                        <i class="fas fa-border-style text-gray-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Gesseiro</h3>
+
+                </a>
+
+                
+
+                <!-- Instalador de Câmeras -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-indigo-100 flex items-center justify-center">
+
+                        <i class="fas fa-video text-indigo-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Instalador de Câmeras</h3>
+
+                </a>
+
+                
+
+                <!-- Lavador de Sofás -->
+
+                <a href="#" class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-blue-100 flex items-center justify-center">
+
+                        <i class="fas fa-couch text-blue-500 text-xl"></i>
+
+                    </div>
+
+                    <h3 class="font-semibold text-dark">Lavador de Sofás</h3>
+
+                </a>
+
+            </div>
+
+            
+
+            <div class="mt-8 text-center">
+
+                <a href="#index-page" class="inline-block px-6 py-3 bg-primary text-white rounded-full font-medium shadow-md hover:bg-orange-600 transition duration-300">
+
+                    <i class="fas fa-arrow-left mr-2"></i> Voltar para o início
+
+                </a>
+
+            </div>
+
+        </main>
+
+
+
+        <!-- Footer -->
+
+        <footer class="bg-dark text-white py-6">
+
+            <div class="container mx-auto px-4 text-center">
+
+                <p>© 2025 Resolve Aí – Todos os direitos reservados</p>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+
+    <!-- Página de Encanador -->
+
+    <div id="encanador-page" class="hidden">
+
+        <!-- Header -->
+
+        <header class="gradient-bg text-white shadow-lg fixed top-0 left-0 right-0 z-50">
+
+            <div class="container mx-auto px-4 py-4">
+
+                <div class="flex justify-between items-center">
+
+                    <div class="flex items-center space-x-2">
+
+                        <i class="fas fa-tools text-2xl text-primary"></i>
+
+                        <h1 class="text-xl font-bold">Resolve Aí</h1>
+
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+
+                        <button class="p-2 rounded-full bg-white bg-opacity-20">
+
+                            <i class="fas fa-bell"></i>
+
+                        </button>
+
+                        <button class="p-2 rounded-full bg-white bg-opacity-20">
+
+                            <i class="fas fa-user"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- Main Content -->
+
+        <main class="container mx-auto px-4 pt-28 pb-20">
+
+            <h2 class="text-2xl font-bold mb-6 text-dark">Encanadores disponíveis</h2>
+
+            
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Profissional 1 -->
+
+                <div class="professional-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+
+                    <div class="relative">
+
+                        <img src="https://via.placeholder.com/300x150" alt="João de Deus" class="w-full h-40 object-cover">
+
+                        <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full p-2 shadow">
+
+                            <i class="fas fa-heart text-red-500"></i>
+
+                        </div>
+
+                    </div>
+
+                    <div class="p-4">
+
+                        <div class="flex justify-between items-start">
+
+                            <div>
+
+                                <h3 class="font-bold text-dark">João de Deus</h3>
+
+                                <p class="text-sm text-gray-500">Encanador</p>
+
+                            </div>
+
+                            <div class="flex items-center">
+
+                                <i class="fas fa-star rating-stars"></i>
+
+                                <span class="ml-1 font-medium">4.8</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mt-3 flex items-center text-sm text-gray-500">
+
+                            <i class="fas fa-map-marker-alt mr-1"></i>
+
+                            <span>1.2 km de distância</span>
+
+                        </div>
+
+                        <div class="mt-3 pt-3 border-t border-gray-100">
+
+                            <p class="text-sm text-gray-600 mb-3">Especialista em reparos hidráulicos e instalações residenciais.</p>
+
+                            <div class="flex justify-between items-center">
+
+                                <span class="text-sm text-gray-500">A partir de</span>
+
+                                <span class="font-bold text-dark">R$ 120,00</span>
+
+                            </div>
+
+                            <button class="w-full mt-4 py-2 bg-green-100 text-green-600 rounded-lg font-medium flex items-center justify-center">
+
+                                <i class="fab fa-whatsapp mr-2"></i>
+
+                                <span>Chamar no WhatsApp</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <!-- Profissional 2 -->
+
+                <div class="professional-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+
+                    <div class="relative">
+
+                        <img src="https://via.placeholder.com/300x150" alt="Pedro Souza" class="w-full h-40 object-cover">
+
+                        <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full p-2 shadow">
+
+                            <i class="far fa-heart text-gray-400"></i>
+
+                        </div>
+
+                    </div>
+
+                    <div class="p-4">
+
+                        <div class="flex justify-between items-start">
+
+                            <div>
+
+                                <h3 class="font-bold text-dark">Pedro Souza</h3>
+
+                                <p class="text-sm text-gray-500">Encanador</p>
+
+                            </div>
+
+                            <div class="flex items-center">
+
+                                <i class="fas fa-star rating-stars"></i>
+
+                                <span class="ml-1 font-medium">4.6</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mt-3 flex items-center text-sm text-gray-500">
+
+                            <i class="fas fa-map-marker-alt mr-1"></i>
+
+                            <span>2.1 km de distância</span>
+
+                        </div>
+
+                        <div class="mt-3 pt-3 border-t border-gray-100">
+
+                            <p class="text-sm text-gray-600 mb-3">Experiência em sistemas hidráulicos comerciais e industriais.</p>
+
+                            <div class="flex justify-between items-center">
+
+                                <span class="text-sm text-gray-500">A partir de</span>
+
+                                <span class="font-bold text-dark">R$ 150,00</span>
+
+                            </div>
+
+                            <button class="w-full mt-4 py-2 bg-green-100 text-green-600 rounded-lg font-medium flex items-center justify-center">
+
+                                <i class="fab fa-whatsapp mr-2"></i>
+
+                                <span>Chamar no WhatsApp</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <!-- Profissional 3 -->
+
+                <div class="professional-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+
+                    <div class="relative">
+
+                        <img src="https://via.placeholder.com/300x150" alt="Rafael Lima" class="w-full h-40 object-cover">
+
+                        <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full p-2 shadow">
+
+                            <i class="far fa-heart text-gray-400"></i>
+
+                        </div>
+
+                    </div>
+
+                    <div class="p-4">
+
+                        <div class="flex justify-between items-start">
+
+                            <div>
+
+                                <h3 class="font-bold text-dark">Rafael Lima</h3>
+
+                                <p class="text-sm text-gray-500">Encanador</p>
+
+                            </div>
+
+                            <div class="flex items-center">
+
+                                <i class="fas fa-star rating-stars"></i>
+
+                                <span class="ml-1 font-medium">4.9</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mt-3 flex items-center text-sm text-gray-500">
+
+                            <i class="fas fa-map-marker-alt mr-1"></i>
+
+                            <span>0.9 km de distância</span>
+
+                        </div>
+
+                        <div class="mt-3 pt-3 border-t border-gray-100">
+
+                            <p class="text-sm text-gray-600 mb-3">Especializado em reformas hidráulicas e manutenção preventiva.</p>
+
+                            <div class="flex justify-between items-center">
+
+                                <span class="text-sm text-gray-500">A partir de</span>
+
+                                <span class="font-bold text-dark">R$ 180,00</span>
+
+                            </div>
+
+                            <button class="w-full mt-4 py-2 bg-green-100 text-green-600 rounded-lg font-medium flex items-center justify-center">
+
+                                <i class="fab fa-whatsapp mr-2"></i>
+
+                                <span>Chamar no WhatsApp</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="mt-8 text-center">
+
+                <a href="#categorias-page" class="inline-block px-6 py-3 bg-primary text-white rounded-full font-medium shadow-md hover:bg-orange-600 transition duration-300">
+
+                    <i class="fas fa-arrow-left mr-2"></i> Voltar para categorias
+
+                </a>
+
+            </div>
+
+        </main>
+
+
+
+        <!-- Footer -->
+
+        <footer class="bg-dark text-white py-6">
+
+            <div class="container mx-auto px-4 text-center">
+
+                <p>© 2025 Resolve Aí – Todos os direitos reservados</p>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+
+    <script>
+
+        // Simulação de navegação entre páginas
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Mostrar a página inicial por padrão
+
+            document.getElementById('index-page').classList.remove('hidden');
+
+            
+
+            // Navegação entre páginas
+
+            const links = document.querySelectorAll('a[href^="#"]');
+
+            links.forEach(link => {
+
+                link.addEventListener('click', function(e) {
+
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href').substring(1);
+
+                    
+
+                    // Esconder todas as páginas
+
+                    document.querySelectorAll('div[id$="-page"]').forEach(page => {
+
+                        page.classList.add('hidden');
+
+                    });
+
+                    
+
+                    // Mostrar a página alvo
+
+                    document.getElementById(targetId).classList.remove('hidden');
+
+                    
+
+                    // Rolagem para o topo
+
+                    window.scrollTo(0, 0);
+
+                });
+
+            });
+
+            
+
+            // Efeito hover nos cards
+
+            const serviceCards = document.querySelectorAll('.service-card');
+
+            serviceCards.forEach(card => {
+
+                card.addEventListener('mouseenter', function() {
+
+                    this.style.transform = 'translateY(-5px)';
+
+                    this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+
+                });
+
+                
+
+                card.addEventListener('mouseleave', function() {
+
+                    this.style.transform = '';
+
+                    this.style.boxShadow = '';
+
+                });
+
+            });
+
+            
+
+            // Efeito hover nos cards de profissionais
+
+            const professionalCards = document.querySelectorAll('.professional-card');
+
+            professionalCards.forEach(card => {
+
+                card.addEventListener('mouseenter', function() {
+
+                    this.style.transform = 'scale(1.02)';
+
+                });
+
+                
+
+                card.addEventListener('mouseleave', function() {
+
+                    this.style.transform = '';
+
+                });
+
+            });
+
+            
+
+            // Filtros ativos
+
+            const filterBtns = document.querySelectorAll('.filter-btn');
+
+            filterBtns.forEach(btn => {
+
+                btn.addEventListener('click', function() {
+
+                    filterBtns.forEach(b => b.classList.remove('active'));
+
+                    this.classList.add('active');
+
+                });
+
+            });
+
+        });
+
+    </script>
+
 </body>
+
 </html>
