@@ -1,113 +1,495 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços On-Demand | Contrate profissionais qualificados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .professional-card:hover {
+            transform: scale(1.02);
+        }
+        .rating-stars {
+            color: #fbbf24;
+        }
+        .map-container {
+            height: 300px;
+            background-color: #e5e7eb;
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e5e7eb;
+            color: #6b7280;
+        }
+        .progress-bar {
+            height: 6px;
+            border-radius: 3px;
+            background-color: #e5e7eb;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
 </head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="pt-BR"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Resolve Aí | Encontre prestadores de serviços&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.bg-principal {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #1F2937, #F97316);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hover-card:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: scale(1.03);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: transform 0.3s;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="bg-gray-100 font-sans"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Header --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="bg-principal text-white shadow"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-6xl mx-auto px-4 py-5 flex justify-between items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-2xl font-bold"&gt;&lt;i class="fas fa-toolbox mr-2"&gt;&lt;/i&gt;Resolve Aí&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="space-x-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="text-white hover:text-orange-300"&gt;&lt;i class="fas fa-bell"&gt;&lt;/i&gt;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="text-white hover:text-orange-300"&gt;&lt;i class="fas fa-user"&gt;&lt;/i&gt;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-2xl mx-auto px-4 py-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;input type="text" placeholder="Qual serviço você precisa?" class="w-full px-4 py-3 rounded-full text-gray-800 focus:ring-2 focus:ring-orange-400" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Categorias --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;main class="max-w-6xl mx-auto px-4 py-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="text-xl font-bold text-gray-800 mb-4"&gt;Categorias Populares&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="grid grid-cols-2 md:grid-cols-4 gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white rounded-xl shadow hover-card p-4 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;i class="fas fa-faucet text-orange-500 text-2xl mb-2"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="font-semibold"&gt;Encanador&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white rounded-xl shadow hover-card p-4 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;i class="fas fa-bolt text-yellow-500 text-2xl mb-2"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="font-semibold"&gt;Eletricista&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white rounded-xl shadow hover-card p-4 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;i class="fas fa-hammer text-gray-700 text-2xl mb-2"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="font-semibold"&gt;Pedreiro&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white rounded-xl shadow hover-card p-4 text-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;i class="fas fa-paint-roller text-green-500 text-2xl mb-2"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="font-semibold"&gt;Pintor&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Profissionais Proximos --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="max-w-6xl mx-auto px-4 py-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="text-xl font-bold text-gray-800 mb-4"&gt;Profissionais Próximos&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white rounded-xl shadow hover-card overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;img src="https://via.placeholder.com/300x150" class="w-full h-36 object-cover" alt="Profissional"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="p-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="font-bold text-gray-800"&gt;Carlos Silva&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-sm text-gray-500"&gt;Encanador - 1.2 km&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="mt-2 flex items-center justify-between"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-sm"&gt;A partir de&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="font-bold text-orange-500"&gt;R$120,00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white rounded-xl shadow hover-card overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;img src="https://via.placeholder.com/300x150" class="w-full h-36 object-cover" alt="Profissional"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="p-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="font-bold text-gray-800"&gt;Ana Oliveira&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-sm text-gray-500"&gt;Eletricista - 0.8 km&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="mt-2 flex items-center justify-between"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-sm"&gt;A partir de&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="font-bold text-orange-500"&gt;R$150,00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white rounded-xl shadow hover-card overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;img src="https://via.placeholder.com/300x150" class="w-full h-36 object-cover" alt="Profissional"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="p-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="font-bold text-gray-800"&gt;João Souza&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-sm text-gray-500"&gt;Pintor - 2.1 km&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="mt-2 flex items-center justify-between"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-sm"&gt;A partir de&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="font-bold text-orange-500"&gt;R$90,00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-tools text-2xl"></i>
+                    <h1 class="text-xl font-bold">Serviços On-Demand</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 rounded-full bg-white bg-opacity-20">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <button class="p-2 rounded-full bg-white bg-opacity-20">
+                        <i class="fas fa-user"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-6 relative">
+                <input type="text" placeholder="Qual serviço você precisa hoje?" 
+                       class="w-full py-3 px-4 pr-12 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            
+            <div class="mt-4 flex overflow-x-auto pb-2 space-x-3">
+                <button class="flex-shrink-0 px-4 py-2 bg-white bg-opacity-20 rounded-full flex items-center space-x-2">
+                    <i class="fas fa-bolt"></i>
+                    <span>Urgente</span>
+                </button>
+                <button class="flex-shrink-0 px-4 py-2 bg-white bg-opacity-20 rounded-full flex items-center space-x-2">
+                    <i class="fas fa-home"></i>
+                    <span>Residencial</span>
+                </button>
+                <button class="flex-shrink-0 px-4 py-2 bg-white bg-opacity-20 rounded-full flex items-center space-x-2">
+                    <i class="fas fa-building"></i>
+                    <span>Comercial</span>
+                </button>
+                <button class="flex-shrink-0 px-4 py-2 bg-white bg-opacity-20 rounded-full flex items-center space-x-2">
+                    <i class="fas fa-star"></i>
+                    <span>Premium</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6">
+        <!-- Categorias de Serviços -->
+        <section class="mb-8">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">Categorias populares</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Encanador -->
+                <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+                    <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-faucet text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Encanador</h3>
+                    <p class="text-sm text-gray-500 mt-1">Vazamentos, instalações</p>
+                </div>
+                
+                <!-- Eletricista -->
+                <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+                    <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-yellow-100 flex items-center justify-center">
+                        <i class="fas fa-bolt text-yellow-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Eletricista</h3>
+                    <p class="text-sm text-gray-500 mt-1">Instalações, reparos</p>
+                </div>
+                
+                <!-- Pedreiro -->
+                <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+                    <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-orange-100 flex items-center justify-center">
+                        <i class="fas fa-hammer text-orange-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Pedreiro</h3>
+                    <p class="text-sm text-gray-500 mt-1">Reformas, construções</p>
+                </div>
+                
+                <!-- Pintor -->
+                <div class="service-card bg-white rounded-xl shadow-md p-4 text-center transition duration-300 cursor-pointer">
+                    <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-paint-roller text-green-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Pintor</h3>
+                    <p class="text-sm text-gray-500 mt-1">Paredes, tetos, fachadas</p>
+                </div>
+            </div>
+            
+            <div class="mt-4 text-center">
+                <button class="text-blue-500 font-medium flex items-center justify-center mx-auto">
+                    <span>Ver todas categorias</span>
+                    <i class="fas fa-chevron-down ml-2"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Profissionais próximos -->
+        <section class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800">Profissionais próximos</h2>
+                <button class="text-sm text-blue-500 font-medium">Ver todos</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Profissional 1 -->
+                <div class="professional-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Encanador" class="w-full h-40 object-cover">
+                        <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full p-2 shadow">
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold text-gray-800">Carlos Silva</h3>
+                                <p class="text-sm text-gray-500">Encanador</p>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-star rating-stars"></i>
+                                <span class="ml-1 font-medium">4.9</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 flex items-center text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt mr-1"></i>
+                            <span>1.2 km de distância</span>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-gray-100 flex justify-between items-center">
+                            <span class="text-sm text-gray-500">A partir de</span>
+                            <span class="font-bold text-gray-800">R$ 120,00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Profissional 2 -->
+                <div class="professional-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Eletricista" class="w-full h-40 object-cover">
+                        <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full p-2 shadow">
+                            <i class="far fa-heart text-gray-400"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold text-gray-800">Ana Oliveira</h3>
+                                <p class="text-sm text-gray-500">Eletricista</p>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-star rating-stars"></i>
+                                <span class="ml-1 font-medium">4.8</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 flex items-center text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt mr-1"></i>
+                            <span>0.8 km de distância</span>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-gray-100 flex justify-between items-center">
+                            <span class="text-sm text-gray-500">A partir de</span>
+                            <span class="font-bold text-gray-800">R$ 150,00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Profissional 3 -->
+                <div class="professional-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1605170439002-90845e8c0137?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                             alt="Pedreiro" class="w-full h-40 object-cover">
+                        <div class="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full p-2 shadow">
+                            <i class="far fa-heart text-gray-400"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold text-gray-800">José Santos</h3>
+                                <p class="text-sm text-gray-500">Pedreiro</p>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-star rating-stars"></i>
+                                <span class="ml-1 font-medium">4.7</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 flex items-center text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt mr-1"></i>
+                            <span>2.1 km de distância</span>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-gray-100 flex justify-between items-center">
+                            <span class="text-sm text-gray-500">A partir de</span>
+                            <span class="font-bold text-gray-800">R$ 180,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como funciona -->
+        <section class="mb-8 bg-white rounded-xl shadow-md p-6">
+            <h2 class="text-xl font-bold mb-6 text-gray-800">Como funciona</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-search text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">1. Encontre um profissional</h3>
+                    <p class="text-gray-600">Busque por categoria ou descreva o serviço que precisa</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-calendar-check text-purple-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">2. Agende o serviço</h3>
+                    <p class="text-gray-600">Escolha data, horário e confirme o orçamento</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-check-circle text-green-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">3. Serviço realizado</h3>
+                    <p class="text-gray-600">Acompanhe em tempo real e avalie o profissional</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviço em andamento (simulado) -->
+        <section class="mb-8 bg-white rounded-xl shadow-md p-6 hidden" id="active-service">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-gray-800">Seu serviço</h2>
+                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">Em andamento</span>
+            </div>
+            
+            <div class="flex items-center mb-6">
+                <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                     alt="Profissional" class="w-16 h-16 rounded-full object-cover mr-4">
+                <div>
+                    <h3 class="font-bold text-gray-800">Carlos Silva</h3>
+                    <p class="text-gray-600">Encanador</p>
+                    <div class="flex items-center mt-1">
+                        <i class="fas fa-star rating-stars"></i>
+                        <span class="ml-1 text-sm font-medium">4.9 (128 avaliações)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="font-semibold text-gray-800 mb-2">Reparo de vazamento</h4>
+                <p class="text-gray-600">Troca de registro na cozinha</p>
+            </div>
+            
+            <div class="map-container mb-6">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marker-alt text-3xl mr-2"></i>
+                    <span>Profissional a caminho - 5 min</span>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                    <span>Tempo estimado</span>
+                    <span>30 min</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="service-progress"></div>
+                </div>
+            </div>
+            
+            <div class="flex justify-between">
+                <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-lg font-medium flex items-center">
+                    <i class="fas fa-phone-alt mr-2"></i>
+                    <span>Ligar</span>
+                </button>
+                <button class="px-4 py-2 bg-red-100 text-red-600 rounded-lg font-medium flex items-center">
+                    <i class="fas fa-times mr-2"></i>
+                    <span>Cancelar</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-around">
+                <button class="py-3 px-4 text-center text-purple-600 border-b-2 border-purple-600">
+                    <i class="fas fa-home block text-xl mb-1"></i>
+                    <span class="text-xs">Início</span>
+                </button>
+                <button class="py-3 px-4 text-center text-gray-500">
+                    <i class="fas fa-search block text-xl mb-1"></i>
+                    <span class="text-xs">Buscar</span>
+                </button>
+                <button class="py-3 px-4 text-center text-gray-500 relative">
+                    <i class="fas fa-bell block text-xl mb-1"></i>
+                    <span class="text-xs">Notificações</span>
+                    <span class="absolute top-1 right-3 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                <button class="py-3 px-4 text-center text-gray-500">
+                    <i class="fas fa-user block text-xl mb-1"></i>
+                    <span class="text-xs">Perfil</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Botão flutuante para solicitar serviço -->
+    <div class="fixed bottom-20 right-4 z-10">
+        <button id="request-service-btn" class="w-14 h-14 gradient-bg text-white rounded-full shadow-xl flex items-center justify-center text-2xl">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+
+    <!-- Modal de solicitação de serviço -->
+    <div id="service-modal" class="fixed inset-0 bg-black bg-opacity-50 z-20 flex items-center justify-center hidden">
+        <div class="bg-white rounded-t-3xl w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto" style="margin-top: auto;">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold text-gray-800">Solicitar serviço</h2>
+                    <button id="close-modal" class="text-gray-500">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">Qual serviço você precisa?</label>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option value="">Selecione uma categoria</option>
+                        <option value="plumber">Encanador</option>
+                        <option value="electrician">Eletricista</option>
+                        <option value="builder">Pedreiro</option>
+                        <option value="painter">Pintor</option>
+                        <option value="cleaner">Diarista</option>
+                    </select>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">Descreva o serviço</label>
+                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" 
+                              rows="3" placeholder="Ex: Preciso trocar um registro que está vazando na cozinha"></textarea>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">Quando precisa?</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button class="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg font-medium">Hoje</button>
+                        <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium">Amanhã</button>
+                        <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium">Esta semana</button>
+                        <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium">Próxima semana</button>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">Endereço</label>
+                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" 
+                           value="Rua das Flores, 123 - São Paulo/SP">
+                </div>
+                
+                <button id="confirm-service-btn" class="w-full gradient-bg text-white py-4 rounded-full font-bold shadow-lg">
+                    Solicitar profissional
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulação de interações
+        document.addEventListener('DOMContentLoaded', function() {
+            // Abrir modal de solicitação
+            const requestBtn = document.getElementById('request-service-btn');
+            const serviceModal = document.getElementById('service-modal');
+            const closeModal = document.getElementById('close-modal');
+            const confirmServiceBtn = document.getElementById('confirm-service-btn');
+            const activeServiceSection = document.getElementById('active-service');
+            const progressBar = document.getElementById('service-progress');
+            
+            requestBtn.addEventListener('click', function() {
+                serviceModal.classList.remove('hidden');
+            });
+            
+            closeModal.addEventListener('click', function() {
+                serviceModal.classList.add('hidden');
+            });
+            
+            // Confirmar serviço (simulação)
+            confirmServiceBtn.addEventListener('click', function() {
+                serviceModal.classList.add('hidden');
+                activeServiceSection.classList.remove('hidden');
+                
+                // Simular progresso do serviço
+                let progress = 0;
+                const interval = setInterval(function() {
+                    progress += 5;
+                    progressBar.style.width = progress + '%';
+                    
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        // Aqui você poderia mostrar uma mensagem de conclusão
+                    }
+                }, 1000);
+            });
+            
+            // Animar cards de serviço ao passar o mouse
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                });
+            });
+            
+            // Animar cards de profissionais ao passar o mouse
+            const professionalCards = document.querySelectorAll('.professional-card');
+            professionalCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
